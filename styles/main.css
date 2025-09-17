@@ -1,0 +1,188 @@
+/* 기본 설정 및 다크 모드 테마 */
+body,
+html {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh; /* 화면 전체 높이를 차지하도록 설정 */
+  background-color: #121212; /* 다크 모드 배경색 */
+  color: #e0e0e0; /* 기본 글자색 */
+  font-family: "Poppins", sans-serif; /* 예쁜 폰트 적용 */
+  display: flex;
+  flex-direction: column; /* 콘텐츠를 세로로 정렬 */
+}
+
+/* 메인 콘텐츠 영역 (푸터를 제외한 부분) */
+.content-wrapper {
+  flex-grow: 1; /* 푸터를 제외한 모든 공간을 차지 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+/* 1. ZomStudio 타이틀 스타일 */
+.main-title {
+  font-size: 4rem;
+  font-weight: 600;
+  margin-bottom: 50px;
+  letter-spacing: 2px;
+  animation: fadeInDown 1s ease-out;
+
+  /* --- 이 부분을 아래 내용으로 교체합니다 --- */
+
+  /* 1. 배경 설정 (반짝 효과, 메인 그라데이션 순) */
+  background-image: linear-gradient(
+      to right,
+      transparent 20%,
+      rgba(255, 255, 255, 0.5) 50%,
+      transparent 80%
+    ),
+    linear-gradient(90deg, #8a2be2, #4169e1);
+
+  /* 2. 각 배경의 사이즈 설정 */
+  background-size: 200% 100%, 100% 100%;
+
+  /* 3. 각 배경의 초기 위치 설정 (반짝 효과는 왼쪽 밖, 메인 그라데이션은 제자리) */
+  background-position: -100% 0, 0 0;
+
+  background-repeat: no-repeat; /* 배경 반복 안 함 */
+
+  /* 4. 배경을 텍스트 모양으로 잘라냄 (핵심!) */
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* 5. 텍스트 색상을 투명하게 만들어 배경이 보이게 함 */
+  -webkit-text-fill-color: transparent;
+
+  /* 6. 부드러운 애니메이션을 위한 transition 설정 */
+  transition: background-position 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* 마우스를 올렸을 때의 스타일 */
+.main-title:hover {
+  /* 반짝 효과 배경의 위치를 오른쪽 밖으로 이동시킴 */
+  background-position: 100% 0, 0 0;
+}
+
+/* 2. 프로젝트 그리드 스타일 */
+.projects-section {
+  width: 100%;
+  max-width: 800px;
+  animation: fadeInUp 1s ease-out;
+}
+
+.projects-grid {
+  display: grid;
+  /* 그리드 아이템을 150px 사이즈로 자동 배치, 반응형으로 작동 */
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 30px; /* 아이템 사이의 간격 */
+}
+
+/* 3. 프로젝트 카드 스타일 */
+.project-card {
+  text-decoration: none;
+  color: inherit;
+  text-align: center;
+  transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.project-card:hover {
+  transform: scale(1.05); /* 마우스를 올리면 살짝 커지는 효과 */
+  filter: brightness(1.2);
+}
+
+.project-logo {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* 항상 정사각형을 유지 */
+  background-color: #2a2a2a;
+  border-radius: 20px;
+  margin-bottom: 15px;
+  overflow: hidden; /* 로고가 정사각형 밖으로 나가지 않도록 함 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #333;
+}
+
+.project-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* 이미지가 비율을 유지하면서 정사각형에 꽉 차도록 자동 조절 */
+}
+
+.project-name {
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+/* 로고가 없을 때를 위한 임시 스타일 */
+.placeholder {
+  background: repeating-linear-gradient(
+    -45deg,
+    #2a2a2a,
+    #2a2a2a 10px,
+    #333 10px,
+    #333 20px
+  );
+}
+
+.main-footer {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 0.8rem;
+  color: #555;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.footer-info {
+  margin-bottom: 15px;
+}
+
+/* 각 정보 사이에 구분선( | ) 추가 */
+.footer-info span:not(:last-child)::after {
+  content: "|";
+  margin: 0 10px;
+}
+
+/* 푸터 안의 링크 스타일 */
+.footer-info a {
+  color: #888;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-info a:hover {
+  color: #bbb;
+  text-decoration: underline;
+}
+
+.copyright {
+  font-size: 0.75rem;
+  color: #444;
+}
+
+/* 간단한 애니메이션 효과 */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
