@@ -68,7 +68,7 @@ html {
 
 /* 2. 프로젝트 그리드 스타일 */
 .projects-section {
-  width: 100%;
+  width: 80%;
   max-width: 800px;
   animation: fadeInUp 1s ease-out;
 }
@@ -77,7 +77,7 @@ html {
   display: grid;
   /* 그리드 아이템을 150px 사이즈로 자동 배치, 반응형으로 작동 */
   grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
-  gap: 30px; /* 아이템 사이의 간격 */
+  gap: 20px; /* 아이템 사이의 간격 */
 }
 
 /* 3. 프로젝트 카드 스타일 */
